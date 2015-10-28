@@ -23,7 +23,10 @@ class PushButton:
 		return self.lastPress
 
 	def setLastPressToNow(self):
-		self.lastPress = time.Clock()
+		self.lastPress = time.clock()
 
 	def setLastPressAsArg(self, lastPressTime):
 		self.lastPress = lastPressTime 
+
+	def timeElapsedSinceLastPress(self):
+		return time.clock() - self.getLastPress()

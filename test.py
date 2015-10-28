@@ -33,12 +33,12 @@ def main():
 	while RUNNING: 
 		clock.tick(FRAMERATE)
 
-		if button24.isPressed() and (time.clock() - button24.getLastPress() > DEBOUNCE):
+		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			baseSpeed = baseSpeed * 2
 			speed = [baseSpeed, baseSpeed]
 			button24.setLastPressToNow()
 
-		if button25.isPressed() and (time.clock() - button25.getLastPress() > DEBOUNCE):
+		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
 			baseSpeed = baseSpeed / 2
 			speed = [baseSpeed, baseSpeed]
 			button25.setLastPressToNow()
