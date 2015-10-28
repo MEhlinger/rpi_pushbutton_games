@@ -15,7 +15,7 @@ def main():
 	clock = pygame.time.Clock()
 
 	pygame.init()
-	size = width, heigh = 320, 240
+	size = width, height = 320, 240
 	baseSpeed = 1
 	speed = [baseSpeed, baseSpeed]
 	black = 0, 0, 0
