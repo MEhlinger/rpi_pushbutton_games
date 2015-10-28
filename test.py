@@ -16,6 +16,7 @@ def main():
 
 	pygame.init()
 	size = width, heigh = 320, 240
+	baseSpeed = 1
 	speed = [baseSpeed, baseSpeed]
 	black = 0, 0, 0
 	white = 255, 255, 255
