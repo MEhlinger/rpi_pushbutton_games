@@ -60,6 +60,9 @@ def main():
 		if ballrect.top < 0 or ballrect.bottom > height:
 			speed[1] = -speed[1]
 
+		if baseSpeed == 0:
+			baseSpeed = 1
+			
 		screen.fill(white)
 		screen.blit(ball, ballrect)
 		pygame.display.flip()
