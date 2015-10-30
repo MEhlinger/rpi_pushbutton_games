@@ -103,7 +103,7 @@ def main():
 		# Replace this godawful block with a function, maybe switch
 		if happy > 50 and nourish > 60:
 			currentGhostImg = fatHappy
-		elif happy > 50 and nourish =< 60 and nourish >= 40:
+		elif happy > 50 and nourish <= 60 and nourish >= 40:
 			currentGhostImg = neutralHappy
 		elif happy > 50 and nourish < 40:
 			currentGhostImg = skinnyHappy
