@@ -57,7 +57,6 @@ def main():
 		if (timer >= FRAMERATE * 30):
 			ghostPet.depleteDrives()
 			timer = 0
-			print "hungrier..."
 
 		if ghostRect.colliderect(foodRect) and not eatableFood.isEaten():
 			ghostPet.adjustNourishment(10)	
@@ -77,7 +76,9 @@ def main():
 
 		for event in pygame.event.get():
 				if event.type == pygame.QUIT: sys.exit()
-
+				elif event.type == pygame.KEYDOWN:
+					if event.key == pygame.K_ESCAPE:
+						sys.exit()
 
 		ghostRect = ghostRect.move(speed)
 
