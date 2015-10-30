@@ -41,6 +41,12 @@ def main():
 	houseImg = pygame.image.load("assets/house.bmp")
 	houseRect = houseImg.get_rect()
 
+	houseRect.x = hauntableHouse.getX()
+	houseRect.y = hauntableHouse.getY()
+
+	foodRect.x = eatableFood.getX()
+	foodRect.y = eatableFood.getY()
+
 
 	while RUNNING: 
 		clock.tick(FRAMERATE)
@@ -50,23 +56,25 @@ def main():
 
 		# same for house
 
-		# If block with collision logic for both items -- Rect.collideRect(Rect)
 		if ghostRect.colliderect(foodRect) and not eatableFood.isEaten():
 			print "yum"
 			eatableFood.setEaten(True)
+		if ghostRect.colliderect(houseRect) and not hauntableHouse.isHaunted():
+			print "boo"
+			hauntableHouse.setHaunted(True)
 
-		# if block for house
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			eatableFood.setEaten(False)
 			button24.setLastPressToNow()
-
 		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
 			hauntableHouse.setHaunted(False)	
 			button25.setLastPressToNow()
 
+
 		for event in pygame.event.get():
 				if event.type == pygame.QUIT: sys.exit()
+
 
 		ghostRect = ghostRect.move(speed)
 
@@ -77,6 +85,10 @@ def main():
 			
 		screen.fill(black)
 		screen.blit(ghostImg, ghostRect)
+		if not eatableFood.isEaten():
+			screen.blit(foodImg, foodRect)
+		if not hauntableHouse.isHaunted():
+			screen.blit(houseImg, houseRect)
 		# If not eaten or haunted, blit the items
 		pygame.display.flip()
 
