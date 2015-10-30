@@ -36,8 +36,16 @@ def main():
 
 	screen = pygame.display.set_mode(size)
 
-	ghostImg = pygame.image.load("assets/ghost00.bmp")
-	ghostRect = ghostImg.get_rect()
+	# Ghost images
+	neutralNeutral = pygame.image.load("assets/neutralneutral.bmp")
+	neutralSad = pygame.image.load("assets/neutralsad.bmp")
+	neutralHappy = pygame.image.load("assets/neutralhappy.bmp")
+	skinnySad = pygame.image.load("assets/skinnysad.bmp")
+	skinnyHappy = pygame.image.load("assets/skinnyhappy.bmp")
+	fatSad = pygame.image.load("assets/fatsad.bmp")
+	fatHappy = pygame.image.load("assets/fathappy.bmp")
+
+	ghostRect = neutralNeutral.get_rect()
 	foodImg = pygame.image.load("assets/food.bmp")
 	foodRect = foodImg.get_rect()
 	houseImg = pygame.image.load("assets/house.bmp")
@@ -54,7 +62,7 @@ def main():
 		clock.tick(FRAMERATE)
 
 		timer += 1
-		if (timer >= FRAMERATE * 30):
+		if (timer >= FRAMERATE): #Add * 30 in production
 			ghostPet.depleteDrives()
 			timer = 0
 
@@ -88,16 +96,33 @@ def main():
 			speed[1] = -speed[1]
 			
 		screen.fill(gray)
-		screen.blit(ghostImg, ghostRect)
+
+		happy = ghostPet.getHappiness()
+		nourish = ghostPet.getNourishment()
+
+		# Replace this godawful block with a function, maybe switch
+		if happy > 50 and nourish > 60:
+			currentGhostImg = fatHappy
+		elif happy > 50 and nourish =< 60 and nourish >= 40:
+			currentGhostImg = neutralHappy
+		elif happy > 50 and nourish < 40:
+			currentGhostImg = skinnyHappy
+		elif happy < 60 and happy > 40 and nourish <= 60 and nourish >= 40:
+			currentGhostImg = neutralNeutral
+		elif happy < 50 and nourish > 60:
+			currentGhostImg = fatSad
+		elif happy < 50 and nourish < 40:
+			currentGhostImg = skinnySad
+		elif happy <= 60 and nourish <= 60 and nourish >= 40:
+			currentGhostImg = neutralSad
+
+		screen.blit(currentGhostImg, ghostRect)
+
 		if not eatableFood.isEaten():
 			screen.blit(foodImg, foodRect)
 		if not hauntableHouse.isHaunted():
 			screen.blit(houseImg, houseRect)
 		pygame.display.flip()
-
-def pseudorandomNewSpeed():
-	newSpeed = random.randrange(-2,2)
-	return (random.randrange(-2, 2), random.randrange(-2, 2))
 
 if __name__ == "__main__":
 	main()
