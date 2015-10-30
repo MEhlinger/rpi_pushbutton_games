@@ -15,6 +15,7 @@ def main():
 	FRAMERATE = 60
 	DEBOUNCE = 0.05
 	clock = pygame.time.Clock()
+	timer = 0 
 
 	pygame.init()
 	size = width, height = 320, 240
@@ -51,16 +52,17 @@ def main():
 	while RUNNING: 
 		clock.tick(FRAMERATE)
 
-		#if eatableFood.isEaten:
-			#Do not render
-
-		# same for house
+		timer += 1
+		if (timer >= FRAMERATE * 30):
+			ghostPet.depleteDrives()
+			timer = 0
+			print "hungrier..."
 
 		if ghostRect.colliderect(foodRect) and not eatableFood.isEaten():
-			print "yum"
+			ghostPet.adjustNourishment(10)	
 			eatableFood.setEaten(True)
 		if ghostRect.colliderect(houseRect) and not hauntableHouse.isHaunted():
-			print "boo"
+			ghostPet.adjustHappiness(10)
 			hauntableHouse.setHaunted(True)
 
 
@@ -89,7 +91,6 @@ def main():
 			screen.blit(foodImg, foodRect)
 		if not hauntableHouse.isHaunted():
 			screen.blit(houseImg, houseRect)
-		# If not eaten or haunted, blit the items
 		pygame.display.flip()
 
 def pseudorandomNewSpeed():
