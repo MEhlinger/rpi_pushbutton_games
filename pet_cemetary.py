@@ -62,7 +62,7 @@ def main():
 		ghostRect = ghostRect.move(speed)
 
 		if ghostRect.left < 0 or ghostRect.right > width:
-			ghsspeed[0] = -speed[0]
+			speed[0] = -speed[0]
 		if ghostRect.top < 0 or ghostRect.bottom > height:
 			speed[1] = -speed[1]
 			
