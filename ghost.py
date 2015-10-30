@@ -4,12 +4,13 @@ import random
 
 class Ghost:
 
-	MAX_NOURISHMENT = 100
-	MAX_HAPPINESS = 100
+	
 
 	def __init__(self):
-		self.nourishment = MAX_NOURISHMENT
-		self.happiness = MAX_HAPPINESS
+		self.MAX_NOURISHMENT = 100
+		self. MAX_HAPPINESS = 100	
+		self.nourishment = self.MAX_NOURISHMENT
+		self.happiness = self. MAX_HAPPINESS
 		self.alive = True
 
 	def depleteDrives(self):
@@ -18,16 +19,16 @@ class Ghost:
 
 	def adjustNourishment(self, adjustment):
 		self.nourishment = self.nourishment + adjustment
-		if self.nourishment > MAX_NOURISHMENT:
-			self.nourishment = MAX_NOURISHMENT
+		if self.nourishment > self.MAX_NOURISHMENT:
+			self.nourishment = self.MAX_NOURISHMENT
 		elif self.nourishment < 0:
 			self.nourishment = 0
 			self.alive = False
 
 	def adjustHappiness(self, adjustment):
 		self.happiness = self.happiness + adjustment
-		if self.happiness > MAX_HAPPINESS:
-			self.happiness = MAX_HAPPINESS
+		if self.happiness > self.MAX_HAPPINESS:
+			self.happiness = self.MAX_HAPPINESS
 		elif self.happiness < 0:
 			self.happiness = 0
 
