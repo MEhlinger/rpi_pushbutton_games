@@ -45,15 +45,24 @@ def main():
 	while RUNNING: 
 		clock.tick(FRAMERATE)
 
-		# If block with collision logic for both items
-		#if () and ():
+		#if eatableFood.isEaten:
+			#Do not render
+
+		# same for house
+
+		# If block with collision logic for both items -- Rect.collideRect(Rect)
+		if ghostRect.collideRect(foodRect) and not eatableFood.isEaten():
+			print "yum"
+			eatableFood.setEaten(True)
+
+		# if block for house
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
-			food.setEaten(False)
+			eatableFood.setEaten(False)
 			button24.setLastPressToNow()
 
 		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
-			house.setHaunted(False)	
+			hauntableHouse.setHaunted(False)	
 			button25.setLastPressToNow()
 
 		for event in pygame.event.get():
