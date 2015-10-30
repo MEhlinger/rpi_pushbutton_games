@@ -2,28 +2,21 @@
 
 class Food:
 
-	def __init__(self, x, y, spritePath):
-		self.sprite = spritePath
+	def __init__(self, x, y):
 		self.location = (x, y)
 		self.eaten = False
 
-	def getSprite(self):
-		return self.sprite
-
-	def setSprite(self, spritePath):
-		self.sprite = spritePath
-
 	def getX(self):
-		return self.x
+		return self.location[0]
 
 	def getY(self):
-		return self.y
+		return self.location[1]
 
 	def setX(self, newX):
-		self.x = newX
+		self.location[0] = newX
 
 	def setY(self, newY):
-		self.y = newY
+		self.location[1] = newY
 
 	def isEaten(self):
 		return eaten

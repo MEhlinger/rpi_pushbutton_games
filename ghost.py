@@ -7,16 +7,10 @@ class Ghost:
 	MAX_NOURISHMENT = 100
 	MAX_HAPPINESS = 100
 
-	def __init__(self, startSpritePath):
- 		self.speed = (1, 1)
+	def __init__(self):
 		self.nourishment = MAX_NOURISHMENT
 		self.happiness = MAX_HAPPINESS
 		self.alive = True
-		self.sprite = startSpritePath
-
-	def randomlyChangeDirection(self):
-		newSpeed = random.randrange(-2,2)
-		self.speed = (random.randrange(-2, 2), random.randrange(-2, 2))
 
 	def depleteDrives(self):
 		self.nourishment = self.nourishment - 1
@@ -47,9 +41,6 @@ class Ghost:
 	def isAlive(self):
 		return self.alive
 
-	def getSprite(self):
-		return self.sprite
-
 	# DO NOT USE THE SETTERS TO REPRESENT EATING OR OTHER SMALL ADJUSTMENTS.
 	# THESE ALLOW FOR VALUES OUTSIDE OF MAX_CONSTANTS AND 0
 	# If these are used to adjust manually for a special reason outside of
@@ -64,6 +55,3 @@ class Ghost:
 
 	def setAlive(self, isItAliveNow):
 		self.alive = isItAliveNow
-
-	def setSprite(self, spritePath):
-		self.sprite = spritePath
