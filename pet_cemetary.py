@@ -51,7 +51,7 @@ def main():
 		# same for house
 
 		# If block with collision logic for both items -- Rect.collideRect(Rect)
-		if ghostRect.collideRect(foodRect) and not eatableFood.isEaten():
+		if ghostRect.colliderect(foodRect) and not eatableFood.isEaten():
 			print "yum"
 			eatableFood.setEaten(True)
 
