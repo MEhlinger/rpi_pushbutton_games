@@ -21,6 +21,7 @@ def main():
 	size = width, height = 320, 240
 	black = 0, 0, 0
 	white = 255, 255, 255
+	gray = 131, 131, 131
 
 	RUNNING = True	#'constant' to keep loops running
 
@@ -85,7 +86,7 @@ def main():
 		if ghostRect.top < 0 or ghostRect.bottom > height:
 			speed[1] = -speed[1]
 			
-		screen.fill(black)
+		screen.fill(gray)
 		screen.blit(ghostImg, ghostRect)
 		if not eatableFood.isEaten():
 			screen.blit(foodImg, foodRect)
