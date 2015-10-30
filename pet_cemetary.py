@@ -65,9 +65,6 @@ def main():
 			ghsspeed[0] = -speed[0]
 		if ghostRect.top < 0 or ghostRect.bottom > height:
 			speed[1] = -speed[1]
-
-		if baseSpeed == 0:
-			baseSpeed = 1
 			
 		screen.fill(black)
 		screen.blit(ghostImg, ghostRect)
