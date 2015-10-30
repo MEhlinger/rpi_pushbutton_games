@@ -19,7 +19,7 @@ class Food:
 		self.location[1] = newY
 
 	def isEaten(self):
-		return eaten
+		return self.eaten
 
 	def setEaten(self, isItEaten):
 		self.eaten = isItEaten
