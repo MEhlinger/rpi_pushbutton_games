@@ -62,7 +62,7 @@ def main():
 		clock.tick(FRAMERATE)
 
 		timer += 1
-		if (timer >= FRAMERATE): #Add * 30 in production
+		if (timer >= FRAMERATE * 30):
 			ghostPet.depleteDrives()
 			timer = 0
 
