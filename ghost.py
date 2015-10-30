@@ -7,7 +7,7 @@ class Ghost:
 	MAX_NOURISHMENT = 100
 	MAX_HAPPINESS = 100
 
-	def __init__(self, startx, starty, startSpritePath):
+	def __init__(self, startSpritePath):
 		self.speed = (1, 1)
 		self.nourishment = MAX_NOURISHMENT
 		self.happiness = MAX_HAPPINESS
