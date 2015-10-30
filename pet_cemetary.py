@@ -30,7 +30,7 @@ def main():
 	eatableFood = food.Food((width/4)*3, (height/4)*3)
 	hauntableHouse = house.House(width/4, (height/4)*3)
 
-	speed = (1,1)
+	speed = [1,1]
 
 	screen = pygame.display.set_mode(size)
 
