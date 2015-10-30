@@ -1,4 +1,4 @@
-#!/usr/bin/python3.4
+# Ghost class
 
 import random
 
@@ -8,7 +8,7 @@ class Ghost:
 	MAX_HAPPINESS = 100
 
 	def __init__(self, startSpritePath):
-		self.speed = (1, 1)
+ 		self.speed = (1, 1)
 		self.nourishment = MAX_NOURISHMENT
 		self.happiness = MAX_HAPPINESS
 		self.alive = True
