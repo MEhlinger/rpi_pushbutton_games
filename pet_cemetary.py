@@ -27,7 +27,7 @@ def main():
 	button25 = pushbutton.PushButton(25)
 
 	ghostPet = ghost.Ghost()
-	food = food.Food((width/4)*3, (height/4)*3)
+	eatableFood = food.Food((width/4)*3, (height/4)*3)
 	hauntableHouse = house.House(width/4, (height/4)*3)
 
 	speed = (1,1)
@@ -46,6 +46,7 @@ def main():
 		clock.tick(FRAMERATE)
 
 		# If block with collision logic for both items
+		#if () and ():
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			food.setEaten(False)
