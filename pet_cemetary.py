@@ -8,7 +8,7 @@
 
 import sys, pygame, time
 import pushbutton
-import ghost, food
+import ghost, food, house
 
 def main():
 
