@@ -27,8 +27,8 @@ def main():
 	button25 = pushbutton.PushButton(25)
 
 	ghostPet = ghost.Ghost()
-	eatableFood = food.Food((width/4)*3, (height/4)*3)
-	hauntableHouse = house.House(width/4, (height/4)*3)
+	eatableFood = food.Food(width/2, (height/4)*3)
+	hauntableHouse = house.House(width/5, (height/4)*3)
 
 	speed = [1,1]
 
