@@ -6,22 +6,36 @@
 # 10-30-15
 #
 
-import sys, pygame, time
+import sys, pygame, time, random
 import pushbutton
 import ghost, food, house
+
+def getLinesFromFile(sourceFile):
+	with open(sourceFile) as doc:
+		lines = []
+		for line in doc:
+			lines.append(line.rstrip('\r\n'))
+			return lines
 
 def main():
 
 	FRAMERATE = 60
 	DEBOUNCE = 0.05
-	clock = pygame.time.Clock()
-	timer = 0 
+	BLACK = 0, 0, 0
+	WHITE = 255, 255, 255
+	GRAY = 131, 131, 131
+	QUIP_SOURCE = "quips.txt"
 
 	pygame.init()
+
+	font = pygame.font.SysFont("monospace", 14)
+	quips = getLinesFromFile(QUIP_SOURCE)
+	quipRendered = False
+
+	clock = pygame.time.Clock()
+	timer = 0 
 	size = width, height = 320, 240
-	black = 0, 0, 0
-	white = 255, 255, 255
-	gray = 131, 131, 131
+
 
 	RUNNING = True	#'constant' to keep loops running
 
@@ -45,15 +59,15 @@ def main():
 	fatSad = pygame.image.load("assets/fatsad.bmp")
 	fatHappy = pygame.image.load("assets/fathappy.bmp")
 
-	ghostRect = neutralNeutral.get_rect()
 	foodImg = pygame.image.load("assets/food.bmp")
-	foodRect = foodImg.get_rect()
 	houseImg = pygame.image.load("assets/house.bmp")
+
+	ghostRect = neutralNeutral.get_rect()
+	foodRect = foodImg.get_rect()
 	houseRect = houseImg.get_rect()
 
 	houseRect.x = hauntableHouse.getX()
 	houseRect.y = hauntableHouse.getY()
-
 	foodRect.x = eatableFood.getX()
 	foodRect.y = eatableFood.getY()
 
@@ -64,22 +78,36 @@ def main():
 		timer += 1
 		if (timer >= FRAMERATE * 30):
 			ghostPet.depleteDrives()
+			quipRendered = False
 			timer = 0
+
 
 		if ghostRect.colliderect(foodRect) and not eatableFood.isEaten():
 			ghostPet.adjustNourishment(10)	
 			eatableFood.setEaten(True)
+			if not quipRendered:
+				label = font.render(radnom.choice(quips), 1, BLACK)
+				quipRendered = True
 		if ghostRect.colliderect(houseRect) and not hauntableHouse.isHaunted():
 			ghostPet.adjustHappiness(10)
 			hauntableHouse.setHaunted(True)
+			if not quipRendered:
+				label = font.render(radnom.choice(quips), 1, BLACK)
+				quipRendered = True
 
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			eatableFood.setEaten(False)
 			button24.setLastPressToNow()
+			if not quipRendered:
+				label = font.render(radnom.choice(quips), 1, BLACK)
+				quipRendered = True
 		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
 			hauntableHouse.setHaunted(False)	
 			button25.setLastPressToNow()
+			if not quipRendered:
+				label = font.render(radnom.choice(quips), 1, BLACK)
+				quipRendered = True
 
 
 		for event in pygame.event.get():
@@ -95,7 +123,7 @@ def main():
 		if ghostRect.top < 0 or ghostRect.bottom > height:
 			speed[1] = -speed[1]
 			
-		screen.fill(gray)
+		screen.fill(GRAY)
 
 		happy = ghostPet.getHappiness()
 		nourish = ghostPet.getNourishment()
@@ -122,6 +150,10 @@ def main():
 			screen.blit(foodImg, foodRect)
 		if not hauntableHouse.isHaunted():
 			screen.blit(houseImg, houseRect)
+
+		if quipRendered:
+			screen.blit(label, (50, 50)
+
 		pygame.display.flip()
 
 if __name__ == "__main__":
