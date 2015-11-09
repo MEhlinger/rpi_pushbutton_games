@@ -15,7 +15,7 @@ def getLinesFromFile(sourceFile):
 		lines = []
 		for line in doc:
 			lines.append(line.rstrip('\r\n'))
-			return lines
+		return lines
 
 def main():
 
@@ -76,7 +76,7 @@ def main():
 		clock.tick(FRAMERATE)
 
 		timer += 1
-		if (timer >= FRAMERATE * 30):
+		if (timer >= FRAMERATE * 20):
 			ghostPet.depleteDrives()
 			quipRendered = False
 			timer = 0
@@ -86,28 +86,26 @@ def main():
 			ghostPet.adjustNourishment(10)	
 			eatableFood.setEaten(True)
 			if not quipRendered:
-				label = font.render(radnom.choice(quips), 1, BLACK)
+				label = font.render(random.choice(quips), 1, BLACK)
 				quipRendered = True
+
 		if ghostRect.colliderect(houseRect) and not hauntableHouse.isHaunted():
 			ghostPet.adjustHappiness(10)
 			hauntableHouse.setHaunted(True)
 			if not quipRendered:
-				label = font.render(radnom.choice(quips), 1, BLACK)
+				label = font.render(random.choice(quips), 1, BLACK)
 				quipRendered = True
 
+		# PUSHBUTTON CONTROLS. COMMENT OUT FOR DEBUGGING ON WORKSTATION
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			eatableFood.setEaten(False)
 			button24.setLastPressToNow()
-			if not quipRendered:
-				label = font.render(radnom.choice(quips), 1, BLACK)
-				quipRendered = True
+
 		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
 			hauntableHouse.setHaunted(False)	
 			button25.setLastPressToNow()
-			if not quipRendered:
-				label = font.render(radnom.choice(quips), 1, BLACK)
-				quipRendered = True
+
 
 
 		for event in pygame.event.get():
@@ -115,6 +113,11 @@ def main():
 				elif event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_ESCAPE:
 						sys.exit()
+					# DEBUGGING CONTROLS FOR WORKSTATION
+					# elif event.key == pygame.K_DOWN:
+					# 	eatableFood.setEaten(False)
+					# elif event.key == pygame.K_UP:
+					# 	hauntableHouse.setHaunted(False)
 
 		ghostRect = ghostRect.move(speed)
 
@@ -152,7 +155,7 @@ def main():
 			screen.blit(houseImg, houseRect)
 
 		if quipRendered:
-			screen.blit(label, (50, 50)
+			screen.blit(label, (50, 50))
 
 		pygame.display.flip()
 
