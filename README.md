@@ -40,7 +40,9 @@ There are four major categories in which you can help:
 	require almost no explanation to learn, and provide a quick and
 	memorable experience. Use the pushbutton module for controls. *For now,
 	this also includes the yet-unborn central menu interface*
+
 	**NOTE: The final pin numbers for the pushbutton wiring are undecided.**
+
 	**Contact project maintainer before submitting a pull request for pin #s**
 2. Refactoring: clean up any part of the code according to general stylistic
 	best practices: functions should do one thing, clear and concise naming,
@@ -59,6 +61,7 @@ There are four major categories in which you can help:
 
 **Project Maintainer:** 
 Marshall Ehlinger
+
 ehlingermd15@mounties...
 
 ### Not An MU Student?

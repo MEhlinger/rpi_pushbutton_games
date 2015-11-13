@@ -96,7 +96,7 @@ def main():
 				label = font.render(random.choice(quips), 1, BLACK)
 				quipRendered = True
 
-		# PUSHBUTTON CONTROLS. COMMENT OUT FOR DEBUGGING ON WORKSTATION
+		# PUSHBUTTON CONTROLS. COMMENT OUT FOR DEBUGGING ON DEV MACHINE
 
 		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
 			eatableFood.setEaten(False)
@@ -113,7 +113,8 @@ def main():
 				elif event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_ESCAPE:
 						sys.exit()
-					# DEBUGGING CONTROLS FOR WORKSTATION
+					# DEBUGGING CONTROLS FOR DEVELOPMENT
+
 					# elif event.key == pygame.K_DOWN:
 					# 	eatableFood.setEaten(False)
 					# elif event.key == pygame.K_UP:
