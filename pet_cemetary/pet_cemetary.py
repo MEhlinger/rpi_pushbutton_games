@@ -7,7 +7,7 @@
 #
 
 import sys, pygame, time, random
-import pushbutton
+# import pushbutton
 import ghost, food, house
 
 def getLinesFromFile(sourceFile):
@@ -39,8 +39,8 @@ def main():
 
 	RUNNING = True	#'constant' to keep loops running
 
-	button24 = pushbutton.PushButton(24)
-	button25 = pushbutton.PushButton(25)
+	# button24 = pushbutton.PushButton(24)
+	# button25 = pushbutton.PushButton(25)
 
 	ghostPet = ghost.Ghost()
 	eatableFood = food.Food(width/2, (height/4)*3)
@@ -98,13 +98,13 @@ def main():
 
 		# PUSHBUTTON CONTROLS. COMMENT OUT FOR DEBUGGING ON DEV MACHINE
 
-		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
-			eatableFood.setEaten(False)
-			button24.setLastPressToNow()
+		# if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
+		# 	eatableFood.setEaten(False)
+		# 	button24.setLastPressToNow()
 
-		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
-			hauntableHouse.setHaunted(False)	
-			button25.setLastPressToNow()
+		# if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
+		# 	hauntableHouse.setHaunted(False)	
+		# 	button25.setLastPressToNow()
 
 
 
