@@ -114,11 +114,10 @@ def main():
 					if event.key == pygame.K_ESCAPE:
 						sys.exit()
 					# DEBUGGING CONTROLS FOR DEVELOPMENT
-
-					# elif event.key == pygame.K_DOWN:
-					# 	eatableFood.setEaten(False)
-					# elif event.key == pygame.K_UP:
-					# 	hauntableHouse.setHaunted(False)
+					elif event.key == pygame.K_DOWN:
+					 	eatableFood.setEaten(False)
+					elif event.key == pygame.K_UP:
+					 	hauntableHouse.setHaunted(False)
 
 		ghostRect = ghostRect.move(speed)
 
