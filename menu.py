@@ -7,7 +7,7 @@
 
 import pygame, sys
 import gameButton
-from pet_cemetary.pet_cemetary import main as petCemetaryMain
+from pet_cemetary.pet_cemetary import main as petCemetaryGame
 
 def mainMenu():
 	FRAMERATE = 60
@@ -28,16 +28,16 @@ def mainMenu():
 	buttons = []
 	selection = 0 # As index in buttons
 
-	petCemetary_btn = gameButton.gameButton("Pet Cemetary", BTN_WIDTH, BTN_HEIGHT)
+	petCemetary_btn = gameButton.gameButton("Pet Cemetary", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(petCemetary_btn)
 
-	dontTouch_btn = gameButton.gameButton("Don't Touch that!", BTN_WIDTH, BTN_HEIGHT)
+	dontTouch_btn = gameButton.gameButton("Don't Touch that!", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(dontTouch_btn)
 
-	spaceInvaded_btn = gameButton.gameButton("Space Invaded", BTN_WIDTH, BTN_HEIGHT)
+	spaceInvaded_btn = gameButton.gameButton("Space Invaded", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(spaceInvaded_btn)
 
-	gameFour_btn = gameButton.gameButton("GAMEFORE", BTN_WIDTH, BTN_HEIGHT)
+	gameFour_btn = gameButton.gameButton("GAMEFORE", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(gameFour_btn)
 
 	RUNNING = True
@@ -61,9 +61,8 @@ def mainMenu():
 							selection += 1
 						else:
 							selection = 0
-
-
-		# Rendering
+					elif event.key == pygame.K_RETURN:
+						buttons[selection].runGame()
 
 		screen.fill([0,0,0])
 
@@ -72,7 +71,6 @@ def mainMenu():
 				buttons[i].renderButton(screen, True, (width/2 - buttons[i].width/2), ((height - TITLECARD_HEIGHT)/len(buttons) + (BTN_HEIGHT * i)))
 			else:
 				buttons[i].renderButton(screen, False, (width/2 - buttons[i].width/2), ((height - TITLECARD_HEIGHT)/len(buttons) + (BTN_HEIGHT * i)))
-
 		
 		pygame.display.flip()
 
