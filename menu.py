@@ -8,6 +8,7 @@
 import pygame, sys
 import gameButton
 from pet_cemetary.pet_cemetary import main as petCemetaryGame
+from fallingSkies.fallingSkies import main as fallingSkiesGame
 
 def mainMenu():
 	FRAMERATE = 60
@@ -31,8 +32,8 @@ def mainMenu():
 	petCemetary_btn = gameButton.gameButton("Pet Cemetary", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(petCemetary_btn)
 
-	dontTouch_btn = gameButton.gameButton("Don't Touch that!", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
-	buttons.append(dontTouch_btn)
+	fallingSkies_btn = gameButton.gameButton("Falling Skies", BTN_WIDTH, BTN_HEIGHT, fallingSkiesGame)
+	buttons.append(fallingSkies_btn)
 
 	spaceInvaded_btn = gameButton.gameButton("Space Invaded", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
 	buttons.append(spaceInvaded_btn)
