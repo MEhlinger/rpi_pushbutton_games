@@ -17,6 +17,7 @@ def mainMenu():
 	BTN_WIDTH = 100
 	BTN_HEIGHT = 50
 	TITLECARD_HEIGHT = 50
+	WHITE = [255, 255, 255]
 
 	size = width, height = 320, 240
 	clock = pygame.time.Clock()
@@ -74,6 +75,9 @@ def mainMenu():
 			else:
 				buttons[i].renderButton(screen, False, (width/2 - buttons[i].width/2), ((height - TITLECARD_HEIGHT)/len(buttons) + (BTN_HEIGHT * i)))
 		
+		label = font.render("RPi / Pygame Hub", True, WHITE)
+		screen.blit(label,[width / 2 - BTN_WIDTH/2 + 5, TITLECARD_HEIGHT / 2 ])
+
 		pygame.display.flip()
 
 

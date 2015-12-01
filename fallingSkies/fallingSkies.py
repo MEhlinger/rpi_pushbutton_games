@@ -82,6 +82,9 @@ def main():
                     xChange -= 10
                 if event.key == pygame.K_RIGHT and not isOverRightBound:
                     xChange += 10
+                elif event.key == pygame.K_q:
+                    pygame.key.set_repeat()
+                    return
 
         gameScreen.fill(darkerGray)
 
