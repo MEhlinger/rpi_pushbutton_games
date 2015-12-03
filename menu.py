@@ -10,6 +10,7 @@ import gameButton
 from pet_cemetary.pet_cemetary import main as petCemetaryGame
 from fallingSkies.fallingSkies import main as fallingSkiesGame
 from invadersFrom.invadersFrom import main as invadersFromGame
+from ShapeChaser.ShapeChaser import main as shapeChaserGame
 
 def mainMenu():
 	FRAMERATE = 60
@@ -40,8 +41,8 @@ def mainMenu():
 	invadersFrom_btn = gameButton.gameButton("Invaders From...", BTN_WIDTH, BTN_HEIGHT, invadersFromGame)
 	buttons.append(invadersFrom_btn)
 
-	gameFour_btn = gameButton.gameButton("GAMEFORE", BTN_WIDTH, BTN_HEIGHT, petCemetaryGame)
-	buttons.append(gameFour_btn)
+	shapeChaser_btn = gameButton.gameButton("ShapeChaser", BTN_WIDTH, BTN_HEIGHT, shapeChaserGame)
+	buttons.append(shapeChaser_btn)
 
 	RUNNING = True
 
