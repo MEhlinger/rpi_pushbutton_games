@@ -32,6 +32,8 @@ The project should embody the following principles:
 * Pygame
 * RPi.GPIO (Note: lowercase 'i' in 'RPi')
 
+	*NOTE: we're likely moving away from using GPIO in favor of a microcontroller middleman and pygame's event handling
+
 
 ### Becoming Involved
 There are four major categories in which you can help:
@@ -71,3 +73,36 @@ If you are interested in the project, but are not an MU student, feel
 free to fork and do what you will, but know that there is a chance that any subsequent
 pull requests may be declined in order to keep this version of the project inside
 the department until the end of the semester.
+
+### Project Directory Template
+```
+/rpi_pushbutton_games
+|__ menu.py (this is the launchpad script)
+|__ LICENSE.txt
+|__ README.md
+|__ .gitignore
+|__ /gameNameOne
+    |__ gameNameOne.py (mandatory same name as directory)
+    |__ supportingClass.py (if you have any)
+    |__ otherClass.py (again, if you have any supporting stuff)
+    |__ __init__.py (this is mandatory. can be EMPTY though)
+    |__ /assets (optional, obviously, but if you have gfx)
+        |__ anyGraphic.png
+        |__ anyOtherGraphic.bmp
+|__ /gameTwo
+    |__ gameTwo.py
+    |__ __init__.py
+
+_________________
+etc... for each game.
+		
+Important--> All pathnames referred to in your main() function 
+MUST be relative from menu.py... 
+that is, I wouldn't write "assets/anyGraphic.png",
+I'd write "gameNameOne/anyGraphic.png".
+Yes, this will not run correctly like this before you
+add your project into the main one. Just change the paths
+last before you get ready to merge, or keep your main
+script (with the main() function) one level above the
+directory it shares a name with and will end up in.
+```

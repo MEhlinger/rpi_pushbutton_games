@@ -7,7 +7,6 @@
 #
 
 import sys, pygame, time, random
-import pushbutton
 import ghost, food, house
 
 def getLinesFromFile(sourceFile):
@@ -24,7 +23,7 @@ def main():
 	BLACK = 0, 0, 0
 	WHITE = 255, 255, 255
 	GRAY = 131, 131, 131
-	QUIP_SOURCE = "quips.txt"
+	QUIP_SOURCE = "pet_cemetary/quips.txt"
 
 	pygame.init()
 
@@ -39,8 +38,6 @@ def main():
 
 	RUNNING = True	#'constant' to keep loops running
 
-	button24 = pushbutton.PushButton(24)
-	button25 = pushbutton.PushButton(25)
 
 	ghostPet = ghost.Ghost()
 	eatableFood = food.Food(width/2, (height/4)*3)
@@ -51,16 +48,16 @@ def main():
 	screen = pygame.display.set_mode(size)
 
 	# Ghost images
-	neutralNeutral = pygame.image.load("assets/neutralneutral.bmp")
-	neutralSad = pygame.image.load("assets/neutralsad.bmp")
-	neutralHappy = pygame.image.load("assets/neutralhappy.bmp")
-	skinnySad = pygame.image.load("assets/skinnysad.bmp")
-	skinnyHappy = pygame.image.load("assets/skinnyhappy.bmp")
-	fatSad = pygame.image.load("assets/fatsad.bmp")
-	fatHappy = pygame.image.load("assets/fathappy.bmp")
+	neutralNeutral = pygame.image.load("pet_cemetary/assets/neutralneutral.bmp")
+	neutralSad = pygame.image.load("pet_cemetary/assets/neutralsad.bmp")
+	neutralHappy = pygame.image.load("pet_cemetary/assets/neutralhappy.bmp")
+	skinnySad = pygame.image.load("pet_cemetary/assets/skinnysad.bmp")
+	skinnyHappy = pygame.image.load("pet_cemetary/assets/skinnyhappy.bmp")
+	fatSad = pygame.image.load("pet_cemetary/assets/fatsad.bmp")
+	fatHappy = pygame.image.load("pet_cemetary/assets/fathappy.bmp")
 
-	foodImg = pygame.image.load("assets/food.bmp")
-	houseImg = pygame.image.load("assets/house.bmp")
+	foodImg = pygame.image.load("pet_cemetary/assets/food.bmp")
+	houseImg = pygame.image.load("pet_cemetary/assets/house.bmp")
 
 	ghostRect = neutralNeutral.get_rect()
 	foodRect = foodImg.get_rect()
@@ -96,29 +93,18 @@ def main():
 				label = font.render(random.choice(quips), 1, BLACK)
 				quipRendered = True
 
-		# PUSHBUTTON CONTROLS. COMMENT OUT FOR DEBUGGING ON DEV MACHINE
-
-		if button24.isPressed() and (button24.timeElapsedSinceLastPress() > DEBOUNCE):
-			eatableFood.setEaten(False)
-			button24.setLastPressToNow()
-
-		if button25.isPressed() and (button25.timeElapsedSinceLastPress() > DEBOUNCE):
-			hauntableHouse.setHaunted(False)	
-			button25.setLastPressToNow()
-
-
-
 		for event in pygame.event.get():
 				if event.type == pygame.QUIT: sys.exit()
 				elif event.type == pygame.KEYDOWN:
 					if event.key == pygame.K_ESCAPE:
 						sys.exit()
 					# DEBUGGING CONTROLS FOR DEVELOPMENT
-
-					# elif event.key == pygame.K_DOWN:
-					# 	eatableFood.setEaten(False)
-					# elif event.key == pygame.K_UP:
-					# 	hauntableHouse.setHaunted(False)
+					elif event.key == pygame.K_DOWN:
+					 	eatableFood.setEaten(False)
+					elif event.key == pygame.K_UP:
+					 	hauntableHouse.setHaunted(False)
+					elif event.key == pygame.K_q:
+						return
 
 		ghostRect = ghostRect.move(speed)
 
